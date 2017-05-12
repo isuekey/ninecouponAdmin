@@ -1,17 +1,19 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>首页</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+    <ion-list *ngIf="accountInfo">
+        <ion-item *ngIf="accountInfo.accountType >= 500">
+            <button ion-button outline (click)="dealWithArea()" >区域处理</button>
+        </ion-item>
+        <ion-item *ngIf="accountInfo.accountType >= 200">
+            <button ion-button outline (click)="dealWithShop()">商户处理</button>
+        </ion-item>
+        <ion-item *ngIf="accountInfo.accountType >= 500">
+            <button ion-button outline (click)="dealWithTemplate()">模版维护</button>
+        </ion-item>
+    </ion-list>
 </ion-content>

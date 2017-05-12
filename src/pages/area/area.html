@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>区域维护
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+        <button ion-button outline (click)="wantToAddNewArea()">增加区域</button>
+    </ion-item>
+    <ion-list *ngIf="beginToAddNewArea">
+        <ion-item>
+            <ion-label>名称:</ion-label>
+            <ion-input type="text" [(ngModel)]="newArea.name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>标志:</ion-label>
+            <ion-input type="text" [(ngModel)]="newArea.areaIndex"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>纬度：</ion-label>
+            <ion-input type="number" [(ngModel)]="newArea.latitude"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>经度：</ion-label>
+            <ion-input type="number" [(ngModel)]="newArea.longitude"></ion-input>
+        </ion-item>
+        <ion-item>
+            <button ion-button outline (click)="addNew()">添加</button>
+        </ion-item>
+    </ion-list>
+    <ion-list >
+    <ion-item *ngFor="let areaItem of areaList">
+        <ion-label>名称：{{areaItem.name}}, 标志：{{areaItem.areaIndex}}</ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

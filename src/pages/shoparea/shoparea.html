@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>店面维护
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list >
+        <ion-list-header>区域列表</ion-list-header>
+        <ion-item *ngFor="let areaItem of areaList" (click)="showShopListOfTheArea(areaItem)">
+        <span>名称：{{areaItem.name}}, 标志：{{areaItem.areaIndex}}</span>
+        </ion-item>
+    </ion-list>
+</ion-content>

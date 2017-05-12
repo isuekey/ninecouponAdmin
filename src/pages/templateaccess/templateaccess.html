@@ -1,0 +1,32 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>优惠授权</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-list-header>授权列表</ion-list-header>
+        <ion-item *ngFor="let accessItem of accessList">
+            <label>{{accessItem.strategy.strategyName}}</label>
+        </ion-item>
+    </ion-list>
+    <ion-item>
+        <button ion-button outline (click)="beginToAddNewStrategyAccess()">准备增加优惠券策略授权</button>
+    </ion-item>
+    <ion-list *ngIf="wantToAddNewStrategyAccess">
+        <ion-item>
+            <ion-label>选择策略</ion-label>
+            <ion-select [(ngModel)]="newAccess.strategyId" interface="popover" >
+                <ion-option value="{{strategyItem.id}}"  *ngFor="let strategyItem of strategyList">{{strategyItem.strategyName}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+        <button ion-button outline (click)="addNewStrategyAccess()">添加此策略</button>
+        </ion-item>
+    </ion-list>
+</ion-content>

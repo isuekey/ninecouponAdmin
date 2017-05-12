@@ -1,0 +1,38 @@
+
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{areaName}}店面列表</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-item>
+        <button ion-button outline (click)="wantToAddNewShop()">增加商店</button>
+    </ion-item>
+    <ion-list *ngIf="beginToAddNewShop">
+        <ion-item>
+            <ion-label>名称:</ion-label>
+            <ion-input type="text" [(ngModel)]="newShop.name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>店长账号:</ion-label>
+            <ion-input type="text" [(ngModel)]="newShop.owner"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>区域标志：{{newShop.areaIndex}}</ion-label>
+        </ion-item>
+        <ion-item>
+            <button ion-button outline (click)="addNewShop()">添加</button>
+        </ion-item>
+    </ion-list>
+    <ion-list>
+        <ion-list-header>店面列表</ion-list-header>
+        <ion-item *ngFor="let shopItem of shopList">
+        <ion-label (click)="manageStrategyAccess(shopItem)">{{shopItem.name}},店长 {{ shopItem.owner }}</ion-label>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

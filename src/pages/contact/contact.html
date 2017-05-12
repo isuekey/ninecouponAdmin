@@ -1,17 +1,35 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>我
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-left></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+    <ion-list *ngIf="accountInfo">
+        <ion-list-header>我的信息</ion-list-header>
+        <ion-item>
+            <ion-label >用户名:{{accountInfo.accountName}}</ion-label>
+        </ion-item>
+        <ion-item>
+            <button ion-button outline (click)="logout()">退出登录</button>
+        </ion-item>
+    </ion-list>
+    <ion-list *ngIf="!accountInfo">
+        <ion-item>
+            <ion-label>用户名:</ion-label>
+            <ion-input type="text" [(ngModel)]="loginInfo.account"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>密码:</ion-label>
+            <ion-input type="password" [(ngModel)]="loginInfo.password"></ion-input>
+        </ion-item>
+        <ion-item>
+            <button ion-button outline (click)="signIn()">登录应用</button>
+        </ion-item>
+    </ion-list>
+    <p>
+    {{display | json}}
+    </p>
 </ion-content>
+

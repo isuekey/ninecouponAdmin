@@ -1,0 +1,47 @@
+
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>优惠券策略维护</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item *ngFor="let strategyItem of strategyList">
+            <label>{{strategyItem.strategyName}}</label><label>{{strategyItem.data.desc}}</label>
+        </ion-item>
+    </ion-list>
+    <ion-item>
+        <button ion-button outline (click)="wantToAddNewStrategy()">增加策略</button>
+    </ion-item>
+    <ion-list *ngIf="beginToAddNewStrategy">
+        <ion-item>
+            <ion-label>名称:</ion-label>
+            <ion-input type="text" [(ngModel)]="newStrategy.strategyName"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>优惠券标题:</ion-label>
+            <ion-input type="text" [(ngModel)]="newStrategy.data.title"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>描述:</ion-label>
+            <ion-input type="text" [(ngModel)]="newStrategy.data.desc"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>抵用:</ion-label>
+            <ion-input type="number" [(ngModel)]="newStrategy.data.offset"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>至少消费:</ion-label>
+            <ion-input type="number" [(ngModel)]="newStrategy.data.consumption"></ion-input>
+        </ion-item>
+        <ion-item>
+            <button ion-button outline (click)="addNewStrategy()">添加</button>
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+    data: CouponData;
