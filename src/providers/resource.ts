@@ -15,7 +15,7 @@ ninecouponAdmin:c9654199366985
 **/
 // export const hostBase = 'http://192.168.31.104:10010';
 // export const hostBase = 'http://192.168.1.102:10010';
-export const hostBase = 'http://192.168.2.105:10010';
+export const hostBase = 'http://192.168.2.104:12000';
 export const token = "d819c1b1b73e64f53e0375d0503fa89c5a5d9101";
 @Injectable()
 export class Resource {
