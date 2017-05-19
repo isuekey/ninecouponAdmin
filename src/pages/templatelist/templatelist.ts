@@ -42,6 +42,7 @@ export class TemplatelistComponent {
     addNewStrategy(){
         this.newStrategy.origin = "suyuan";
         this.resource.addNewStrategy(this.newStrategy, (success)=>{
+            this.wantToAddNewStrategy();
             this.queryStrategyList();
         });
     }

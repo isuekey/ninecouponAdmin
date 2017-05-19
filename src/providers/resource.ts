@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http,BaseRequestOptions, Headers, RequestMethod } from '@angular/http';
+import { Http, BaseRequestOptions, Headers, RequestMethod } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { AccountInfo, TokenInfo } from "../model/account.model";
@@ -15,7 +15,8 @@ ninecouponAdmin:c9654199366985
 **/
 // export const hostBase = 'http://192.168.31.104:10010';
 // export const hostBase = 'http://192.168.1.102:10010';
-export const hostBase = 'http://192.168.2.104:12000';
+export const hostBase = 'http://139.162.82.31';
+// export const hostBase = 'http://192.168.2.104:12000';
 export const token = "d819c1b1b73e64f53e0375d0503fa89c5a5d9101";
 @Injectable()
 export class Resource {
@@ -24,7 +25,7 @@ export class Resource {
         console.log('Hello Resource Provider');
     }
 
-    errorHandler = function errorHandler(error, errorFunc?:(error)=>void){
+    errorHandler = function errorHandler(error, successFunc?:((success)=>void), errorFunc?:((error)=>void)){
         console.log(error);
         errorFunc && errorFunc(error.json());
     };
@@ -44,7 +45,7 @@ export class Resource {
             TokenInfo.saveLocalToken(tokenInfo);
             successFunc && successFunc(tokenInfo);
         }, (error) => {
-            this.errorHandler(error, errorFunc);
+            this.errorHandler(error, successFunc, errorFunc);
         })
     };
 
@@ -63,7 +64,7 @@ export class Resource {
         return this.http.post(url, refresh, options).subscribe((suc)=>{
             successFunc && successFunc(suc);
         }, (err)=>{
-            this.errorHandler(err, errorFunc);
+            this.errorHandler(err, successFunc, errorFunc);
         })
     }
 
@@ -78,7 +79,7 @@ export class Resource {
             AccountInfo.saveLocalAccount(accountInfo);
             successFunc && successFunc(accountInfo);
         }, (error)=>{
-            this.errorHandler(error, errorFunc);            
+            this.errorHandler(error, successFunc, errorFunc);            
         });
     }
 
@@ -90,7 +91,7 @@ export class Resource {
         return this.http.get(url, {headers}).subscribe((suc)=>{
             successFunc && successFunc(suc.json())
         }, (error)=>{
-            this.errorHandler(error, errorFunc);
+            this.errorHandler(error, successFunc, errorFunc);
         });
     }
 
@@ -102,7 +103,7 @@ export class Resource {
         return this.http.post(url, areaInfo, { headers}).subscribe((suc)=>{
             successFunc && successFunc(suc.json());
         }, (error)=>{
-            this.errorHandler(error, errorFunc);
+            this.errorHandler(error, successFunc, errorFunc);
         });
     }
 
@@ -114,7 +115,7 @@ export class Resource {
         return this.http.get(url, {headers}).subscribe((suc)=>{
             successFunc && successFunc(suc.json());
         }, (error)=>{
-            this.errorHandler(error, errorFunc);
+            this.errorHandler(error, successFunc, errorFunc);
         });
     }
 
@@ -126,7 +127,7 @@ export class Resource {
         return this.http.post(url, shopInfo, {headers}).subscribe((suc)=>{
             successFunc && successFunc(suc.json());
         }, (error)=>{
-            this.errorHandler(error, errorFunc);
+            this.errorHandler(error, successFunc, errorFunc);
         });
     };
 
@@ -138,7 +139,7 @@ export class Resource {
         return this.http.get(url, {headers}).subscribe((suc)=>{
             successFunc && successFunc(suc.json());
         }, (error)=>{
-            this.errorHandler(error, errorFunc);
+            this.errorHandler(error, successFunc, errorFunc);
         });
     };
 
@@ -150,7 +151,7 @@ export class Resource {
         return this.http.post(url, strategy, {headers}).subscribe((suc)=>{
             successFunc && successFunc(suc.json());
         }, (error)=>{
-            this.errorHandler(error, errorFunc);
+            this.errorHandler(error, successFunc, errorFunc);
         });
     };
 
@@ -178,7 +179,7 @@ export class Resource {
             });
             successFunc && successFunc(accessList);
         }, (error)=>{
-            this.errorHandler(error, errorFunc);
+            this.errorHandler(error, successFunc, errorFunc);
         });
     };
 
@@ -193,7 +194,7 @@ export class Resource {
         }, {headers}).subscribe((suc)=>{
             successFunc && successFunc(suc.json());
         }, (error)=>{
-            this.errorHandler(error, errorFunc);
+            this.errorHandler(error, successFunc, errorFunc);
         });
     };
 }
